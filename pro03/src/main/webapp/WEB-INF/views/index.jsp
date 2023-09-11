@@ -11,25 +11,34 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>티스푼 메인 페이지</title>
+    <!-- 헤드 부분 인클루드 -->
+    <jsp:include page="./include/head.jsp"></jsp:include>
 </head>
 <body>
-<h2>티스푼 메인 페이지</h2>
-<div class="container">
-    이름 : ${myName }
-    <hr>
-    현재 : ${today }
+<jsp:include page="./include/hd.jsp"></jsp:include>
+<div class="container is-fullhd">
+        <!-- 헤더 부분 인클루드 -->
+
+
+    <section class="hero is-medium is-link">
+        <div class="hero-body">
+            <p class="title">
+                Medium hero
+            </p>
+            <p class="subtitle">
+                Medium subtitle
+            </p>
+        </div>
+    </section>
+
+
+
+
+
+
+
 </div>
-<ul class="list">
-    <li><a href="${path1}/sample/main.do">RequestMapping 방식 : Get</a></li>
-    <li><a href="${path1}/sample/get1.do?id=kkt&pw=1234">GetMapping 방식 : request+model</a></li>
-    <li><a href="${path1}/sample/get2.do?id=kkt&pw=1234">RequestMapping.GET 방식 : request+model</a></li>
-    <li><a href="${path1}/sample/get3.do?id=kkt&pw=1234">RequestMapping.GET 방식 : RequestParam+model</a></li>
-    <li><a href="${path1}/sample/get4.do?id=kkt&pw=1234">RequestMapping.GET 방식 : dto+model</a></li>
-    <li><a href="${path1}/sample/get5.do?id=kkt&pw=1234">RequestMapping.GET 방식 : ModelAttribute+model</a></li>
-    <li><a href="${path1}/sample/get6.do/kkt/1234">RequestMapping.GET 방식 : PathVariable+model</a></li>
-    <li><a href="${path1}/sample/get7.do?id=kkt&pw=1234">RequestMapping.GET 방식 : RequestParam+ModelAndView</a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
-</ul>
+<!-- 푸터 부분 인클루드 -->
+<jsp:include page="./include/ft.jsp"></jsp:include>
 </body>
 </html>

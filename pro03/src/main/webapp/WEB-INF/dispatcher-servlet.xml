@@ -24,6 +24,9 @@
     <resources mapping="/reservation/**" location="/WEB-INF/views/reservation" />
     <resources mapping="/util/**" location="/WEB-INF/views/util" />
     <resources mapping="/sample/**" location="/WEB-INF/views/sample" />
+    <resources mapping="/sample2/**" location="/WEB-INF/views/sample2" />
+
+
 
     <!-- 리졸버에 대한 접두사와 접미사 설정 -->
     <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

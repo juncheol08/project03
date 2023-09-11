@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class BoardDAOImpl implements BoardDAO{
+public class BoardDAOImpl implements BoardDAO {
 
     @Autowired
     private SqlSession sqlSession;
@@ -20,8 +20,8 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public Board boardDetail(int seq) throws Exception {
-        sqlSession.update("board.countUp",seq);
-        return sqlSession.selectOne("board.boardDetail",seq);
+        sqlSession.update("board.countUp", seq);
+        return sqlSession.selectOne("board.boardDetail", seq);
     }
 
     @Override
@@ -30,12 +30,12 @@ public class BoardDAOImpl implements BoardDAO{
     }
 
     @Override
-    public void boardDelete(int dto) throws Exception {
-        sqlSession.delete("board.boardDelete",dto);
+    public void boardDelete(int seq) throws Exception {
+        sqlSession.delete("board.boardDelete", seq);
     }
 
     @Override
     public void boardEdit(Board dto) throws Exception {
-        sqlSession.update("board.boardEdit",dto);
+        sqlSession.update("board.boardEdit", dto);
     }
 }
