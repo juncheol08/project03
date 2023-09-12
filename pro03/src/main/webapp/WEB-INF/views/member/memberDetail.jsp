@@ -66,7 +66,7 @@
             </table>
             <%-- <c:if test='${sid eq "admin"}'>  --%>
             <div class="button-group">
-                <a class="button" href="${path1 }/member/memberEdit.do?id=${member.id}">정보 수정</a>
+                <a class="button" href="${path1 }/member/mypage.do?id=${member.id}">정보 수정</a>
             </div>
             <%-- </c:if> --%>
         </div>

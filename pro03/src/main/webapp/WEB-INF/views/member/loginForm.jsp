@@ -20,34 +20,50 @@
 <!-- 헤더 부분 인클루드 -->
 <jsp:include page="../include/hd.jsp"></jsp:include>
 
-<div class="content">
-    <div class="field">
-        <p class="control has-icons-left has-icons-right">
-            <input class="input" type="email" placeholder="Email">
-            <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-            <span class="icon is-small is-right">
-      <i class="fas fa-check"></i>
-    </span>
-        </p>
+<div class="content" id="content">
+    <div class="row column text-center">
+        <h2 class="h1">로그인</h2>
+        <hr>
+        <div class="container">
+            <c:if test="${!empty msg }">
+                <script>
+                    alert("로그인 실패");
+                    document.loginForm.userid.focus();
+                </script>
+            </c:if>
+            <form action="${path1 }/member/loginpro.do" method="post" name="loginForm">
+                <div class="table_form_wrap">
+                    <table class="table_form">
+                        <tbody>
+                        <tr>
+                            <th><label for="id">아이디</label></th>
+                            <td><input type="text" name="id" id="id" size="100" class="input" placeholder="아이디 입력" required>
+                                <!--  pattern="^[a-z0-9]+$"  -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="pw">비밀번호</label></th>
+                            <td><input type="password" name="pw" id="pw"  class="input" placeholder="비밀번호 입력" required>
+                                <!--  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" class="button is-primary" value="로그인">
+                                <input type="reset" class="button" value="취소">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+            <script>
+                function loginFaiure() {
+                    alert("로그인 실패");
+                }
+            </script>
+        </div>
     </div>
-    <div class="field">
-        <p class="control has-icons-left">
-            <input class="input" type="password" placeholder="Password">
-            <span class="icon is-small is-left">
-      <i class="fas fa-lock"></i>
-    </span>
-        </p>
-    </div>
-    <div class="field">
-        <p class="control">
-            <button class="button is-success">
-                Login
-            </button>
-        </p>
-    </div>
-
 </div>
 
 

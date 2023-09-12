@@ -71,11 +71,11 @@
                             Log in
                         </a>
                     </c:if>
-<%--                    <c:if test="${sid.equals('admin')}">--%>
+                    <c:if test="${sid.equals('admin')}">
                         <a href="${path1}/member/list.do" class="button is-primary">
                             <strong>MemberList</strong>
                         </a>
-<%--                    </c:if>--%>
+                    </c:if>
 
                 </div>
             </div>

@@ -15,6 +15,7 @@ public interface MemberDAO {
     public Member signIn(String id) throws Exception;
     public Member loginCheck(String id) throws Exception;
     public Member login(String id) throws Exception;
+    public Member loginAjax(Member member) throws Exception;
 
 
 

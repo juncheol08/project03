@@ -56,4 +56,7 @@ public class MemberDAOImpl implements MemberDAO{
     public Member login(String id) throws Exception {
         return sqlSession.selectOne("member.login",id);
     }
+    public Member loginAjax(Member member) throws Exception {
+        return sqlSession.selectOne("member.login", member);
+    }
 }
