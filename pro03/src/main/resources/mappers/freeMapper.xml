@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="free">
+    <!-- 공지사항 목록 -->
+    <select id="freeList" resultType="kr.co.teaspoon.dto.Free">
+        select * from free order by regdate desc
+    </select>
+    <!-- 글 상세보기 -->
+    <select id="freeDetail" resultType="kr.co.teaspoon.dto.Free">
+        select * from free where bno=#{bno}
+    </select>
+    <!-- 글 수 카운트 -->
+    <select id="totalCount" resultType="integer" >
+        select count(*) from free
+    </select>
+    <insert id="freeInsert">
+        insert into free values (default, #{title}, #{content}, default,'admin', default,default)
+    </insert>
+    <delete id="freeDelete">
+        delete from free where bno=#{bno}
+    </delete>
+    <update id="freeEdit">
+        update free set title=#{title}, content=#{content} where bno=#{bno}
+    </update>
+
+    <update id="visitCount">
+        update free set visited=visited+1 where bno=#{bno}
+    </update>
+
+
+
+    <sql id="criteria">
+        <where>
+            <trim prefixOverrides="OR">
+                <foreach item="type" collection="typeArr">
+                    <trim prefixOverrides="OR">
+                        <choose>
+                            <when test="type == 'T'.toString()">
+                                title LIKE '%' || #{keyword} || '%'
+                            </when>
+                            <when test="type == 'C'.toString()">
+                                content LIKE '%' || #{keyword} || '%'
+                            </when>
+                            <when test="type == 'W'.toString()">
+                                nickname LIKE '%' || #{keyword} || '%'
+                            </when>
+                        </choose>
+                    </trim>
+                </foreach>
+            </trim>
+        </where>
+    </sql>
+    <select id="getListWithPaging" resultType="kr.co.teaspoon.dto.Free">
+        <![CDATA[
+        select * from test
+        ]]>
+        <include refid="criteria" />
+        <![CDATA[
+        ORDER BY regdate DESC LIMIT ((#{pageNum} - 1) * #{amount}), #{amount}
+        ]]>
+    </select>
+
+</mapper>

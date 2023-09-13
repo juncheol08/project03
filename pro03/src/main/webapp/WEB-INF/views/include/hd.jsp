@@ -36,6 +36,9 @@
 
                 <div class="navbar-dropdown">
                     <a href="${path1}/board/list.do" class="navbar-item">
+                        공지사항
+                    </a>
+                    <a href="${path1}/free/list.do" class="navbar-item">
                         게시판
                     </a>
                     <a href="${path1}/sample2/list.do" class="navbar-item">
