@@ -11,7 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>글 수정하기</title>
-    <!-- 헤드 부분 인클루드 -->
+	<script type="text/javascript" src="${path1}/resources/ckeditor/ckeditor.js"/>
+
+	<!-- 헤드 부분 인클루드 -->
     <jsp:include page="../include/head.jsp"></jsp:include>
 </head>
 <body>
@@ -22,29 +24,32 @@
 	
 	<div class="content" id="content">
 	    <div class="row column text-center">
-	      <h2 class="h1">공지사항 글 수정</h2>
+	      <h2 class="h1">게시글 수정</h2>
 	      <hr>
 	      <div class="container">
-	      	<form action="${path1 }/board/edit.do" method="post">
+	      	<form action="${path1 }/free/edit.do" method="post">
 			      <table id="table1">
 			      	<tbody>
 			      		<tr>
 			      			<th style="background-color:#dcdcdc">글 제목</th>
 			      			<td>
-			      				<input type="hidden" name="seq" id="seq" value="${dto.seq }" >
+			      				<input type="hidden" name="bno" id="bno" value="${dto.bno }" >
 			      				<input type="text" name="title" id="title" placeholder="제목 입력" value="${dto.title }" maxlength="98" required>
 			      			</td>
 			      		</tr>
 			      		<tr>
 			      			<th style="background-color:#dcdcdc">글 내용</th>
 			      			<td>
-			      				<textarea name="content" id="content" placeholder="내용 입력" rows="8" cols="100" maxlength="800" required>${dto.content }</textarea>
+			      				<textarea name="contents" id="contents" placeholder="내용 입력" rows="8" cols="100" maxlength="800" required>${dto.content }</textarea>
+								<script>
+								CKEDITOR.replace('contents',{filebrowserUploadUrl:'${path1}/free/imageUpload.do'});
+								</script>
 			      			</td>
 			      		</tr>
 			      		<tr>
 			      			<td colspan="2">
 			      				<input type="submit" class="submit success button" value="글 수정" >
-			      				<a class="button" href="${path1 }/board/list.do">글 목록</a>
+			      				<a class="button" href="${path1 }/free/list.do">글 목록</a>
 			      			</td>
 			      		</tr>
 			      	</tbody>

@@ -52,7 +52,14 @@ public class MemberController {
         String id = (String) session.getAttribute("sid");
         Member member = memberService.getMember(id);
         model.addAttribute("member", member);
+        return "/member/mypage";
+    }
 
+    // 로그인한 사용자
+    @GetMapping("useredit.do")
+    public String useredit(@RequestParam String id, Model model) throws Exception{
+        Member member = memberService.getMember(id);
+        model.addAttribute("member", member);
         return "/member/mypage";
     }
 

@@ -41,6 +41,9 @@
                     <a href="${path1}/free/list.do" class="navbar-item">
                         게시판
                     </a>
+                    <a href="${path1}/guestbook/list.do" class="navbar-item">
+                        자료실
+                    </a>
                     <a href="${path1}/sample2/list.do" class="navbar-item">
                         Sample
                     </a>

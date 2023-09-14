@@ -25,8 +25,8 @@
     <resources mapping="/util/**" location="/WEB-INF/views/util" />
     <resources mapping="/sample/**" location="/WEB-INF/views/sample" />
     <resources mapping="/sample2/**" location="/WEB-INF/views/sample2" />
-
-
+    <resources mapping="/guestbook/**" location="/WEB-INF/views/guestbook" />
+    <resources mapping="/error/**" location="/WEB-INF/views/error" />
 
     <!-- 리졸버에 대한 접두사와 접미사 설정 -->
     <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -37,7 +37,10 @@
     <!-- 멀티파트 리졸버 설정 -->
     <!--    id 는 객체 이름-->
     <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <beans:property name="maxUploadSize" value="10485760" /> <!-- 사이즈 지정 10MB -->
+<!--        <beans:property name="maxUploadSize" value="10485760" /> &lt;!&ndash; 사이즈 지정 10MB &ndash;&gt;-->
+        <beans:property name="defaultEncoding" value="UTF-8"/> <!-- 기본 인코딩 -->
+        <beans:property name="maxUploadSize" value="52428800"/> <!-- 파일 사이즈 : 50MB -->
+        <beans:property name="maxInMemorySize" value="1048576"/> <!-- 메모리 사이즈 : 1MB -->
     </beans:bean>
 
 

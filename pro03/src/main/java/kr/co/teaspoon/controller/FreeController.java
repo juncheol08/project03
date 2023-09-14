@@ -77,7 +77,7 @@ public class FreeController {
         Free dto = new Free();
         dto.setBno(bno);
         dto.setTitle(request.getParameter("title"));
-        dto.setContent(request.getParameter("content"));
+        dto.setContent(request.getParameter("contents"));
         freeService.freeEdit(dto);
         return "redirect:list.do";
     }
