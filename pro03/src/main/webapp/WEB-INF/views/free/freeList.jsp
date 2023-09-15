@@ -15,6 +15,11 @@
 	<title>게시판 목록</title>
     <!-- 헤드 부분 인클루드 -->
     <jsp:include page="../include/head.jsp"></jsp:include>
+	<style>
+		table {
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 		<!-- 헤더 부분 인클루드 -->
@@ -28,12 +33,12 @@
 		      <table>
 		      	<thead>
 		      		<tr>
-		      			<th width="80">No</th>
-		      			<th>제목</th>
-		      			<th>작성자</th>
-		      			<th width="120">작성일</th>
-		      			<th width="100">조회수</th>
-		      			<th width="100">추천</th>
+		      			<th width="10%" >No</th>
+		      			<th >제목</th>
+		      			<th width="10%">작성자</th>
+		      			<th width="10%">작성일</th>
+		      			<th width="10%">조회수</th>
+		      			<th width="10%">추천</th>
 		      		</tr>
 		      	</thead>
 		      	<tbody>
