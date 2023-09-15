@@ -22,7 +22,7 @@
 
 <div class="content" id="content">
     <div class="row column text-center">
-        <h2 class="h1">로그인</h2>
+        <h2 class="h1" style="text-align: center">로그인</h2>
         <hr>
         <div class="container">
             <c:if test="${!empty msg }">
@@ -33,10 +33,11 @@
             </c:if>
             <form action="${path1 }/member/loginpro.do" method="post" name="loginForm">
                 <div class="table_form_wrap">
-                    <table class="table_form">
+
+                    <table class="table_form" style="width: 400px; margin: 0 auto">
                         <tbody>
                         <tr>
-                            <th><label for="id">아이디</label></th>
+                            <th style="width: 100px"><label for="id">아이디</label></th>
                             <td><input type="text" name="id" id="id" size="100" class="input" placeholder="아이디 입력" required>
                                 <!--  pattern="^[a-z0-9]+$"  -->
                             </td>
@@ -56,6 +57,7 @@
                         </tbody>
                     </table>
                 </div>
+
             </form>
             <script>
                 function loginFaiure() {

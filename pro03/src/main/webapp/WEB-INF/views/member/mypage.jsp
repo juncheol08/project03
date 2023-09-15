@@ -22,10 +22,10 @@
     <div class="content" id="content">
         <div class="row column text-center">
             <div class="container">
-                <c:if test="${sid=='admin' }">
+                <c:if test="${sid!='admin' }">
                     <h2 class="page_tit">회원 정보 수정</h2>
                 </c:if>
-                <c:if test="${sid!='admin' }">
+                <c:if test="${sid=='admin' }">
                     <h2 class="page_tit">관리자 회원 정보 수정하기</h2>
                 </c:if>
                 <hr>

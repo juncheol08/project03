@@ -36,9 +36,9 @@
 		      			<th style="background-color:#dcdcdc">글 제목</th>
 		      			<td>${dto.title }</td>
 		      		</tr>
-		      		<tr>
-		      			<th style="background-color:#dcdcdc">글 내용</th>
-		      			<td><p>${dto.content }</p></td>
+		      		<tr style="min-height: 400px">
+		      			<th style="background-color:#dcdcdc;min-height: 400px">글 내용</th>
+		      			<td style="min-height: 400px"><p>${dto.content }</p></td>
 		      		</tr>
 		      		<tr>
 		      			<th style="background-color:#dcdcdc">작성자</th>
@@ -52,6 +52,10 @@
 		      			<th style="background-color:#dcdcdc">읽은 횟수</th>
 		      			<td>${dto.visited }</td>
 		      		</tr>
+					<tr>
+						<th style="background-color:#dcdcdc">추천수</th>
+						<td>${dto.rec } <a class="button" href="${path1 }/free/recommend.do?bno=${dto.bno}">추천</a></td>
+					</tr>
 		      	</tbody>
 		      </table>
 				<div class="button-group">

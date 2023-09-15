@@ -82,6 +82,17 @@ public class FreeController {
         return "redirect:list.do";
     }
 
+    @GetMapping("recommend.do")
+    public String recommendFree(HttpServletRequest request, Model model) throws Exception {
+        int bno = Integer.parseInt(request.getParameter("bno"));
+
+        Free dto = freeService.freeDetail(bno);
+        model.addAttribute("dto", dto);
+        return "/free/freeEdit";
+    }
+
+
+
     //ckeditor를 이용한 이미지 업로드
     @RequestMapping(value="imageUpload.do", method = RequestMethod.POST)
     public void imageUpload(HttpServletRequest request,

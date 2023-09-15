@@ -1,21 +1,23 @@
 package kr.co.teaspoon.controller;
 
+import kr.co.teaspoon.dto.Board;
 import kr.co.teaspoon.dto.FileInfo;
-import kr.co.teaspoon.dto.Free;
 import kr.co.teaspoon.dto.GuestBook;
 import kr.co.teaspoon.dto.Member;
+import kr.co.teaspoon.service.FileInfoService;
 import kr.co.teaspoon.service.GuestBookService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -29,18 +31,33 @@ import java.util.UUID;
 @RequestMapping("/guestbook/*")
 public class GuestBookController {
 
-    @Autowired
-    ServletContext servletContext;
+    @Resource(name="uploadPath")
+    String uploadPath;
 
+    @Autowired
+    HttpSession session;
 
     @Autowired
     private GuestBookService guestBookService;
+    @Autowired
+    private FileInfoService fileInfoService;
 
-    @GetMapping("list.do")
-    public String getGuestBookList(Model model) throws Exception{
-        List<GuestBook> guestbookList = guestBookService.guestbookList();
-        model.addAttribute("guestbookList",guestbookList);
+
+    @GetMapping("list.do")		//board/list.do
+    public String getBoardList(Model model) throws Exception {
+        List<GuestBook> boardList = guestBookService.fileList();
+        model.addAttribute("boardList", boardList);
         return "/guestbook/guestBookList";
+    }
+
+    @GetMapping("detail.do")	//board/detail.do?seq=1
+    public String getBoardDetail(HttpServletRequest request, Model model) throws Exception {
+        int articleno = Integer.parseInt(request.getParameter("articleno"));
+        GuestBook dto = guestBookService.fileDetail(articleno);
+        FileInfo dto2 = fileInfoService.fileInfoDetail(articleno);
+        model.addAttribute("dto", dto);
+        model.addAttribute("dto2",dto2);
+        return "/guestbook/guestBookDetail";
     }
 
     @RequestMapping(value = "insert.do", method = RequestMethod.GET)
@@ -49,13 +66,15 @@ public class GuestBookController {
     }
 
     @RequestMapping(value = "insert.do", method = RequestMethod.POST)
-    public String write(GuestBook guestBookDto, @RequestParam("upfile") MultipartFile[] files, Model model, HttpSession session) throws IllegalStateException, IOException {
+    public String write(GuestBook guestBookDto, @RequestParam("upfile") MultipartFile[] files, Model model, HttpServletRequest req) throws IllegalStateException, IOException {
 //        Member member = (Member) session.getAttribute("member");
         String id = (String) session.getAttribute("sid");
         if (id != null) {
-            String realPath = servletContext.getRealPath("/pro03_war/resources/upload");
+            //String realPath = req.getRealPath("/pro3_war/resources/upload");
+            String realPath = req.getSession().getServletContext().getRealPath("/resources/upload/");
+            System.out.println("path : " + realPath);
             String today = new SimpleDateFormat("yyMMdd").format(new Date());
-            String saveFolder = realPath + File.separator + today;
+            String saveFolder = realPath + today;
             System.out.println(saveFolder);
             File folder = new File(saveFolder);
             if(!folder.exists())
@@ -76,10 +95,12 @@ public class GuestBookController {
             }
             guestBookDto.setFileInfos(fileInfos);
             guestBookDto.setUserid(id);
-//            guestBookDto.setUserid(member.getId());
             try {
                 guestBookService.writeArticle(guestBookDto);
-                return "/guestbook/writesuccess";
+                List<GuestBook> boardList = guestBookService.fileList();
+                model.addAttribute("boardList", boardList);
+                System.out.println("writeArticle success");
+                return "/guestbook/guestBookList";
             } catch (Exception e) {
                 e.printStackTrace();
                 model.addAttribute("msg", "글 작성중 문제가 발생했습니다.");
@@ -90,4 +111,8 @@ public class GuestBookController {
             return "/error/error";
         }
     }
+
+
+
+
 }
