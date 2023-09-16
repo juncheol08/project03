@@ -347,3 +347,7 @@ template {
 [hidden] {
   display: none;
 }
+
+.logoimg {
+  min-height: 50px !important;
+}
