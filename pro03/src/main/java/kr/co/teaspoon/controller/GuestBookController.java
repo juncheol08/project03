@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
@@ -22,10 +23,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @RequestMapping("/guestbook/*")
@@ -112,7 +110,21 @@ public class GuestBookController {
         }
     }
 
-
+    @RequestMapping(value="/download", method=RequestMethod.GET)
+    public ModelAndView downloadFile(@RequestParam("sfolder") String sfolder, @RequestParam("ofile") String ofile,
+                                     @RequestParam("sfile") String sfile, HttpSession session) {
+        Member member = (Member) session.getAttribute("userinfo");
+        if(member != null) {
+            Map<String, Object> fileInfo = new HashMap<String, Object>();
+            fileInfo.put("sfolder", sfolder);
+            fileInfo.put("ofile", ofile);
+            fileInfo.put("sfile", sfile);
+            System.out.println(sfolder + " " + ofile + " " + sfile);
+            return new ModelAndView("fileDownLoadView", "downloadFile", fileInfo);
+        } else {
+            return new ModelAndView("redirect:/");
+        }
+    }
 
 
 }

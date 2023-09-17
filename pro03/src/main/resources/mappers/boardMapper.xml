@@ -50,7 +50,7 @@
     </sql>
     <select id="getListWithPaging" resultType="kr.co.teaspoon.dto.Board">
         <![CDATA[
-        select * from test
+        select * from board
         ]]>
         <include refid="criteria" />
         <![CDATA[

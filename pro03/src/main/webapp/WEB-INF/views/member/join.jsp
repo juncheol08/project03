@@ -22,8 +22,8 @@
 
 <div class="content" id="content">
     <div class="row column text-center">
-        <div class="container">
-                <h2 class="page_tit">회원 가입</h2>
+        <div class="container" style="margin-top: 120px">
+                <h2 class="page_tit"style="text-align: center">회원 가입</h2>
             <hr>
 
             <form name="frm1" id="frm1" action="${path1 }/member/insert.do" method="post" onsubmit="return joinCheck(this)">

@@ -22,7 +22,7 @@
 	 	<jsp:include page="../include/hd.jsp"></jsp:include>
     </header>
 	
-	<div class="content" id="content">
+	<div class="content" id="content" style="margin-top: 120px">
 	    <div class="row column text-center">
 	      <h2 class="h1">글쓰기</h2>
 	      <hr>

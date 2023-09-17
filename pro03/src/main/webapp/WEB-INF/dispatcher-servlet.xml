@@ -46,7 +46,8 @@
 
     <!-- 멀티파트 업로드 디렉토리 지정 -->
     <beans:bean id="uploadPath" class="java.lang.String">
-        <beans:constructor-arg value="D:\baik\spring1\pro03\src\main\webapp\resources\upload" />
+<!--        <beans:constructor-arg value="D:\baik\spring1\pro03\src\main\webapp\resources\upload" />-->
+        <beans:constructor-arg value="/Users/juncheol/chunjae/02_study/spring1/pro03/src/main/webapp/resources/upload" />
         <!-- 개발서버 사용 목적이므로 나중에 경로 바꿔줘야 함. (target 폴더로)-->
     </beans:bean>
 
@@ -54,7 +55,10 @@
     <context:component-scan base-package="kr.co.teaspoon.controller" />
 
     <annotation-driven />
-
+    <beans:bean id="fileDownLoadView" class="kr.co.teaspoon.controller.FileDownLoadView"/>
+    <beans:bean id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <beans:property name="order" value="0" />
+    </beans:bean>
 
 
     <!-- 인터셉터 : 글쓰기와 같은 회원권한을 가진 경우는 반드시 로그인 페이지를 거쳐서 시도할 것  -->

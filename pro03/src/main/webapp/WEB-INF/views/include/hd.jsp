@@ -7,7 +7,7 @@
 <header id="hd">
 <%--<header id="hd" class="container is-fullhd">--%>
 
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="height: 90px">
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="height: 90px; background-color: #D9E7E6">
     <div class="navbar-brand" style="height: 90px">
         <a class="navbar-item" href="${path1}" >
             <img src="${path1}/resources/img/logo_noBackground_blue.png" class="logoimg">
@@ -37,8 +37,8 @@
                     <a href="${path1}/guestbook/list.do" class="navbar-item">
                         자료실
                     </a>
-                    <a href="${path1}/sample2/list.do" class="navbar-item">
-                        Sample
+                    <a href="${path1 }/file/filelist1.do" class="navbar-item">
+                        Fileboard
                     </a>
 <%--                    <hr class="navbar-divider">--%>
                 </div>
@@ -72,7 +72,7 @@
                     </c:if>
                     <c:if test="${sid.equals('admin')}">
                         <a href="${path1}/member/list.do" class="button is-primary">
-                            <strong>MemberList</strong>
+                            <strong>관리자 페이지</strong>
                         </a>
                     </c:if>
 

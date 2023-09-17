@@ -32,10 +32,16 @@
                 </script>
             </c:if>
             <form action="${path1 }/member/loginpro.do" method="post" name="loginForm">
-                <div class="table_form_wrap">
-
-                    <table class="table_form" style="width: 400px; margin: 0 auto">
+                <div class="table_form_wrap" style="min-height: 70vh">
+                    <section style="height: 60px">
+                    </section>
+                    <table class="table_form" style="width: 400px; margin: 0 auto;">
                         <tbody>
+                        <tr>
+                            <td colspan="2" style="text-align: center">
+                                <img src="${path1}/resources/img/logo_noBackground_blue.png" alt="" style="width: 140px;">
+                            </td>
+                        </tr>
                         <tr>
                             <th style="width: 100px"><label for="id">아이디</label></th>
                             <td><input type="text" name="id" id="id" size="100" class="input" placeholder="아이디 입력" required>

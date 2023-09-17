@@ -24,8 +24,9 @@
 <!-- 헤더 부분 인클루드 -->
 <jsp:include page="../include/hd.jsp"></jsp:include>
 
-<div class="content container" id="content">
-    <h2 class="title">회원 약관 동의</h2>
+<div class="content container" id="content" style="margin-top: 120px">
+
+    <h2 class="title" style="text-align: center">회원 약관 동의</h2>
     <article class="agree_fr">
         <h2>제1장 총칙</h2>
 
@@ -323,8 +324,8 @@
 
         제33조(분쟁의 해결) "회사"는 분쟁이 발생하였을 경우에 "이용자"가 제기하는 정당한 의견이나 불만을 반영하여 적절하고 신속한 조치를 취합니다. 다만, 신속한 처리가 곤란한 경우에 "회사"는 "이용자"에게 그 사유와 처리일정을 통보합니다.
     </article>
-    <div class="form-check">
-        <input type="checkbox" id="ck_item1" name="ck_item" class="form-check-input">
+    <div class="form-check" style="text-align: center">
+        <input type="checkbox" id="ck_item1" name="ck_item" class="form-check-input" >
         <label for="ck_item1" class="form-check-label">약관에 동의</label><br><br>
     </div>
     <article class="agree_fr">
@@ -909,16 +910,13 @@
 
         ③ 법 시행 전에 개인정보를 수집한 개인정보처리자는 기존의 수집목적 범위에도 불구하고 제1항 단서 및 제2항을 준수하기 위하여 새롭게 정보주체의 동의를 받을 목적으로 법 시행 전에 수집한 개인정보를 이용할 수 있다.
     </article>
-    <div class="form-check">
+    <div class="form-check" style="text-align: center">
         <input type="checkbox" id="ck_item2" name="ck_item2" class="form-check-input">
         <label for="ck_item2" class="form-check-label">개인정보처리방침에 동의</label><br><br>
+        <label onclick="protocol()" class="form-check-label button is-info"><strong>전체 약관에 동의</strong></label>
     </div><br><hr><br>
-    <div class="form-check">
-        <label onclick="protocol()" class="form-check-label"><strong>전체 약관에 동의</strong></label>
-    </div>
-    <br><hr><br>
-    <div class="btn-group">
-        <button type="button" id="in_btn1" class="btn btn-primary">다음 단계</button>
+    <div class="btn-group" style="text-align: center">
+        <button type="button" id="in_btn1" class="button is-link">다음 단계</button>
     </div>
     <script>
         var ck_item1 = document.getElementById("ck_item1");

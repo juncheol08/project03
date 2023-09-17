@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path1" value="${pageContext.request.contextPath }" />
-<c:set var="path" value=" servletContext.getRealPath('/pro3_war/resources/upload')"/>
+<c:set var="path" value=" servletContext.getRealPath('${pageContext.request.contextPath }/resources/upload')"/>
 <!DOCTYPE html>
 <html>
 <head>
