@@ -31,7 +31,7 @@
                     document.loginForm.userid.focus();
                 </script>
             </c:if>
-            <form action="${path1 }/member/loginpro.do" method="post" name="loginForm">
+            <form action="${path1 }/member/signin.do" method="post" name="loginForm">
                 <div class="table_form_wrap" style="min-height: 70vh">
                     <section style="height: 60px">
                     </section>

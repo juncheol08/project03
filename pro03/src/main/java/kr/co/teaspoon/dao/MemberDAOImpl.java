@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class MemberDAOImpl implements MemberDAO{
+public class MemberDAOImpl implements MemberDAO {
     @Autowired
     private SqlSession sqlSession;
 
@@ -19,7 +19,7 @@ public class MemberDAOImpl implements MemberDAO{
 
     @Override
     public Member getMember(String id) throws Exception {
-        return sqlSession.selectOne("member.getMember",id);
+        return sqlSession.selectOne("member.getMember", id);
     }
 
     @Override
@@ -29,34 +29,31 @@ public class MemberDAOImpl implements MemberDAO{
 
     @Override
     public void memberInsert(Member member) throws Exception {
-        sqlSession.insert("member.memberInsert",member);
+        sqlSession.insert("member.memberInsert", member);
     }
 
     @Override
-    public void memberEdit(Member member) throws Exception {
-        sqlSession.update("member.memberEdit",member);
+    public void memberUpdate(Member member) throws Exception {
+        sqlSession.update("member.memberUpdate", member);
     }
 
     @Override
     public void memberDelete(String id) throws Exception {
-        sqlSession.delete("memberDelete",id);
+        sqlSession.delete("member.memberDelete", id);
     }
 
     @Override
     public Member signIn(String id) throws Exception {
-        return sqlSession.selectOne("member.signIn",id);
+        return sqlSession.selectOne("member.signIn", id);
     }
 
     @Override
     public Member loginCheck(String id) throws Exception {
-        return sqlSession.selectOne("member.loginCheck",id);
+        return sqlSession.selectOne("member.loginCheck", id);
     }
 
     @Override
     public Member login(String id) throws Exception {
-        return sqlSession.selectOne("member.login",id);
-    }
-    public Member loginAjax(Member member) throws Exception {
-        return sqlSession.selectOne("member.login", member);
+        return sqlSession.selectOne("member.login", id);
     }
 }

@@ -10,11 +10,11 @@ import java.util.List;
 
 @Service
 public class MemberServiceImpl implements MemberService{
-
     @Autowired
     private MemberDAO memberDAO;
-
-    BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
+    
+    // spring security 이용
+    private BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
 
     @Override
     public List<Member> memberList() throws Exception {
@@ -37,8 +37,8 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public void memberEdit(Member member) throws Exception {
-        memberDAO.memberEdit(member);
+    public void memberUpdate(Member member) throws Exception {
+        memberDAO.memberUpdate(member);
     }
 
     @Override
@@ -50,24 +50,22 @@ public class MemberServiceImpl implements MemberService{
     public Member signIn(String id) throws Exception {
         return memberDAO.signIn(id);
     }
-
-    //서비스에서 로그인 처리
+    
+    // 서비스에서 로그인 처리
     @Override
     public boolean loginCheck(String id, String pw) throws Exception {
         boolean comp = false;
         Member member = memberDAO.loginCheck(id);
-        boolean loginSuccess = pwEncoder.matches(pw,member.getPw());
-        if(member!=null&&loginSuccess){
-            comp =true;
-        } else {
-            comp = false;
+        boolean check = pwEncoder.matches(pw, member.getPw()); // 입력된 비밀번호와 db의 암호화된 비밀번호 비교
+        if(member != null && check) {
+            comp = true;
         }
         return comp;
     }
-
-    //Ajax로 로그인 처리 -> 컨트롤러
+    
+    // Ajax로 로그인 처리 (컨트롤러)
     @Override
-    public Member loginAjax(Member member) throws Exception {
-        return memberDAO.loginAjax(member);
+    public Member login(String id) throws Exception {
+        return memberDAO.login(id);
     }
 }

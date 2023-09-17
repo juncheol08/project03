@@ -1,6 +1,5 @@
 package kr.co.teaspoon.controller;
 
-import kr.co.teaspoon.dto.Board;
 import kr.co.teaspoon.dto.FileInfo;
 import kr.co.teaspoon.dto.GuestBook;
 import kr.co.teaspoon.dto.Member;
@@ -17,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;

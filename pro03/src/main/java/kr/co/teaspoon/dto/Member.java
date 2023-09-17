@@ -1,13 +1,7 @@
 package kr.co.teaspoon.dto;
 
+import lombok.Data;
 
-import lombok.*;
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 @Data
 public class Member {
     private String id;
@@ -22,4 +16,5 @@ public class Member {
     private String birth;
     private int pt;
     private int visited;
+    private int job;
 }

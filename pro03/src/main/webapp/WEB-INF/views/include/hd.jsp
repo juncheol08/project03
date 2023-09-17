@@ -22,12 +22,29 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a href="${path1}/board/list.do" class="navbar-item">
+            <a href="${path1}/notice/list.do" class="navbar-item">
                 공지사항
             </a>
             <a href="${path1}/free/list.do" class="navbar-item">
-                게시판
+                게시판old
             </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    게시판
+                </a>
+                <div class="navbar-dropdown">
+                    <a href="${path1}/board/list.do" class="navbar-item">
+                        자유게시판
+                    </a>
+                    <a href="${path1}/boardTea/list.do" class="navbar-item">
+                        선생님게시판
+                    </a>
+                    <a href="${path1}/boardPar/list.do" class="navbar-item">
+                        학부모게시판
+                    </a>
+                    <%--                    <hr class="navbar-divider">--%>
+                </div>
+            </div>
 
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
@@ -71,8 +88,8 @@
                         </a>
                     </c:if>
                     <c:if test="${sid.equals('admin')}">
-                        <a href="${path1}/member/list.do" class="button is-primary">
-                            <strong>관리자 페이지</strong>
+                        <a href="${path1}/admin/adminMain.do" class="button is-danger">
+                            admin
                         </a>
                     </c:if>
 
