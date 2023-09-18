@@ -46,8 +46,8 @@
 
     <!-- 멀티파트 업로드 디렉토리 지정 -->
     <beans:bean id="uploadPath" class="java.lang.String">
-        <beans:constructor-arg value="D:\baik\spring1\pro03\src\main\webapp\resources\upload" />
-<!--        <beans:constructor-arg value="/Users/juncheol/chunjae/02_study/spring1/pro03/src/main/webapp/resources/upload" />-->
+<!--        <beans:constructor-arg value="D:\baik\spring1\pro03\src\main\webapp\resources\upload" />-->
+        <beans:constructor-arg value="/Users/juncheol/chunjae/02_study/spring1/pro03/src/main/webapp/resources/upload" />
         <!-- 개발서버 사용 목적이므로 나중에 경로 바꿔줘야 함. (target 폴더로)-->
     </beans:bean>
 

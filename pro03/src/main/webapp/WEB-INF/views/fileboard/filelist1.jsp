@@ -70,9 +70,9 @@
 				  </c:if>
 				  </tbody>
 			  </table>
-			  <c:if test="${sid.equals('admin')}">
+<%--			  <c:if test="${sid.equals('admin')}">--%>
 			  	<a href="${path1}/file/fileupload1.do" class="button is-primary">파일 자료 등록</a>
-			  </c:if>
+<%--			  </c:if>--%>
 		  </div>
 	    </div>
 	</div>

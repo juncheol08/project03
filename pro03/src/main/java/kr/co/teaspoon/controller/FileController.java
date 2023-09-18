@@ -187,7 +187,6 @@ public class FileController {
             while(it.hasNext()){
                 String paramfName = it.next();
                 MultipartFile file = files.getFile(paramfName);
-                if(file.getOriginalFilename()!=null){
                     log.info("-----------------------------------");
                     log.info("name : "+file.getOriginalFilename());
                     log.info("size : "+file.getSize());
@@ -215,13 +214,16 @@ public class FileController {
                         log.info(e2.getMessage());
                     }
 
+//                if (!fileList.isEmpty()) {
+                if (!file.getOriginalFilename().equals("")) {
+                    fileService.removeFileAll(postNo);
                 }
 
-                fileService.updateFileboard(fileboard);
+//                fileService.updateFileboard(fileboard);
             }
 
             fileboard.setFileList(fileList);
-        fileboard.setFileBoard(board); //글 제목 내용
+            fileboard.setFileBoard(board); //글 제목 내용
 //        fileService.removeFileAll(postNo);
         fileService.updateFileboard(fileboard);
 

@@ -60,6 +60,6 @@ public class FileServiceImpl implements FileService {
     }
     @Override
     public void removeFileAll(int postNo) throws Exception {
-        fileDAO.removeFileboard(postNo);
+        fileDAO.removeFileAll(postNo);
     }
 }

@@ -75,10 +75,10 @@
 				  <tr>
 					  <td>
 						  <a href="${path1}/file/filelist1.do" class="button is-primary">파일 자료 목록</a>
-						  <c:if test="${sid.equals('admin')}">
+<%--						  <c:if test="${sid.equals('admin')}">--%>
 							  <a href="${path1}/file/removeFileboard.do?postNo=${fileboard.fileBoard.postNo}" class="button is-danger">자료 삭제</a>
 							  <a href="${path1}/file/modifyFileboard.do?postNo=${fileboard.fileBoard.postNo}" class="button is-info">자료 수정</a>
-						  </c:if>
+<%--						  </c:if>--%>
 					  </td>
 				  </tr>
 				  </tbody>

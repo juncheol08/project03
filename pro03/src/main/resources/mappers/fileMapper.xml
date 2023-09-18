@@ -36,12 +36,20 @@
 	<update id="fileboardUpdate">
 		update fileboard set title=#{title}, content=#{content} where postno=#{postNo}
 	</update>
-<!--	<insert id="fileUpdate">-->
-<!--		insert into fileobj values (default, #{postNo}, #{saveFolder}, #{originFile}, #{saveFile}, #{fileSize}, #{uploadDate})-->
-<!--	</insert>-->
-	<update id="fileUpdate">
-		update fileobj set saveFolder=#{saveFolder}, originFile=#{originFile}, saveFile=#{saveFile}, fileSize=#{fileSize}, uploadDate=#{uploadDate} where no=#{no}
-	</update>
+	<insert id="fileUpdate">
+		<choose>
+			<when test="originFile != null and originFile.trim() != ''">
+				insert into fileobj values (default, #{postNo}, #{saveFolder}, #{originFile}, #{saveFile}, #{fileSize}, #{uploadDate})
+			</when>
+			<otherwise>
+				-- 조건문 에러 발생 회피하기위해 의미없는 쿼리문 설정함.
+				select 1
+			</otherwise>
+		</choose>
+	</insert>
+<!--	<update id="fileUpdate">-->
+<!--		update fileobj set saveFolder=#{saveFolder}, originFile=#{originFile}, saveFile=#{saveFile}, fileSize=#{fileSize}, uploadDate=#{uploadDate} where no=#{no}-->
+<!--	</update>-->
 
 
 
