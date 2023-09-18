@@ -53,4 +53,13 @@ public class FileServiceImpl implements FileService {
     public FileDTO getFile(int no) throws Exception {
         return fileDAO.getFile(no);
     }
+
+    @Override
+    public void updateFileboard(FileVO fileboard) throws Exception {
+        fileDAO.updateFileboard(fileboard);
+    }
+    @Override
+    public void removeFileAll(int postNo) throws Exception {
+        fileDAO.removeFileboard(postNo);
+    }
 }

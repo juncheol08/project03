@@ -14,4 +14,6 @@ public interface FileDAO {
     public void removeFileboard(int postNo) throws Exception;
     public void fileRemove(int no) throws Exception;
     public FileDTO getFile(int no) throws Exception;
+    public void updateFileboard(FileVO fileboard) throws Exception;
+    public void removeFileAll(int postNo) throws Exception;
 }

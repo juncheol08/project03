@@ -44,7 +44,9 @@
                         <tbody>
                         <tr>
                             <th>글 번호</th>
-                            <td>${fileboard.fileBoard.postNo}</td>
+                            <td>${fileboard.fileBoard.postNo}
+                                <input type="hidden" name="postNo" id="postNo" class="input" value="${fileboard.fileBoard.postNo}">
+                            </td>
                         </tr>
                         <tr>
                             <th><label for="title">제목</label></th>
@@ -58,16 +60,16 @@
                             <th>첨부 파일</th>
                             <td>
                                 현재 파일 : <br>
-                                <c:forEach var="file" items="${fileboard.fileList}">
-                                    <a href="${path1}/resources/upload/${file.originFile}" title="${file.fileSize}" download>${file.originFile}</a>
-                                    <button type="button" class="remove_btn" style="display:inline-block;padding:0;background-color: black;color:#fff;width:18px;height:18px;font-size:12px;line-height:18px;text-align:center;border-radius:10px;" data1="${file.no}" data2="${file.postNo}">x</button><br>
+                                <c:forEach var="file" items="${fileboard.fileList}" varStatus="status">
+                                    <a href="${path1}/resources/upload/${file.originFile}" title="${file.fileSize}" id="filelink${status.count}" download>${file.originFile}</a>
+                                    <button type="button" class="remove_btn${status.count}" style="display:inline-block;padding:0;background-color: black;color:#fff;width:18px;height:18px;font-size:12px;line-height:18px;text-align:center;border-radius:10px;" data1="${file.no}" data2="${file.postNo}">x</button><br>
                                 </c:forEach>
                                 <c:if test="${empty fileboard.fileList}">
                                     첨부된 파일이 없습니다.
                                 </c:if>
                                 <hr>새로 첨부할 파일 : <br>
                                 <div class="control">
-                                    <label for="file1" class="file-label">
+                                    <label for="file1" class="file-label" id="file-js-example1">
                                         <span style="padding:5px;margin:5px">파일1 : </span>
                                         <input type="file" name="file1" id="file1" class="file-input">
                                         <span class="file-cta">
@@ -77,11 +79,13 @@
                                           <span class="file-label">
                                             Choose a file…
                                           </span>
+                                            <span class="file-name">
+								            </span>
                                         </span>
                                     </label>
                                 </div>
                                 <div class="control">
-                                    <label for="file2" class="file-label">
+                                    <label for="file2" class="file-label" id="file-js-example2">
                                         <span style="padding:5px;margin:5px">파일2 : </span>
                                         <input type="file" name="file2" id="file2" class="file-input">
                                         <span class="file-cta">
@@ -91,11 +95,13 @@
                                           <span class="file-label">
                                             Choose a file…
                                           </span>
+                                            <span class="file-name">
+								            </span>
                                         </span>
                                     </label>
                                 </div>
                                 <div class="control">
-                                    <label for="file3" class="file-label">
+                                    <label for="file3" class="file-label" id="file-js-example3">
                                         <span style="padding:5px;margin:5px">파일3 : </span>
                                         <input type="file" name="file3" id="file3" class="file-input">
                                         <span class="file-cta">
@@ -105,6 +111,8 @@
                                           <span class="file-label">
                                             Choose a file…
                                           </span>
+                                            <span class="file-name">
+								            </span>
                                         </span>
                                     </label>
                                 </div>
@@ -129,7 +137,7 @@
                 </form>
                 <script>
                 $(document).ready(function(){
-                    $(".remove_btn").click(function(){
+                    $(".remove_btn1").click(function(){
                        var tar = {
                            no : parseInt($(this).attr("data1")),
                            postNo:parseInt($(this).attr("data2"))
@@ -141,13 +149,78 @@
                            data:tar,
                            sucess:function(){
                              console.log("파일 삭제 성공");
+                             $("#filelink1").remove();
                            },
                            error:function(){
                                console.log("파일 삭제 실패");
+                               $("#filelink1").remove();
                            }
                        });
                     });
+                    $(".remove_btn2").click(function(){
+                        var tar = {
+                            no : parseInt($(this).attr("data1")),
+                            postNo:parseInt($(this).attr("data2"))
+                        };
+                        $.ajax({
+                            url:"${path1}/file/fileRemove.do", //요청URL
+                            type:"post",    //요청 전송방식
+                            dataType:"json",
+                            data:tar,
+                            sucess:function(){
+                                console.log("파일 삭제 성공");
+                                $("#filelink2").remove();
+                            },
+                            error:function(){
+                                console.log("파일 삭제 실패");
+                                $("#filelink2").remove();
+                            }
+                        });
+                    });
+                    $(".remove_btn3").click(function(){
+                        var tar = {
+                            no : parseInt($(this).attr("data1")),
+                            postNo:parseInt($(this).attr("data2"))
+                        };
+                        $.ajax({
+                            url:"${path1}/file/fileRemove.do", //요청URL
+                            type:"post",    //요청 전송방식
+                            dataType:"json",
+                            data:tar,
+                            sucess:function(){
+                                console.log("파일 삭제 성공");
+                                $("#filelink3").remove();
+                            },
+                            error:function(){
+                                console.log("파일 삭제 실패");
+                                $("#filelink3").remove();
+                            }
+                        });
+                    });
                 });
+                </script>
+                <script>
+                    const fileInput1 = document.querySelector('#file-js-example1 input[type=file]');
+                    fileInput1.onchange = () => {
+                        if (fileInput1.files.length > 0) {
+                            const fileName = document.querySelector('#file-js-example1 .file-name');
+                            fileName.textContent = fileInput1.files[0].name;
+                        }
+                    }
+                    const fileInput2 = document.querySelector('#file-js-example2 input[type=file]');
+                    fileInput2.onchange = () => {
+                        if (fileInput2.files.length > 0) {
+                            const fileName = document.querySelector('#file-js-example2 .file-name');
+                            fileName.textContent = fileInput2.files[0].name;
+                        }
+                    }
+                    const fileInput3 = document.querySelector('#file-js-example3 input[type=file]');
+                    fileInput3.onchange = () => {
+                        if (fileInput3.files.length > 0) {
+                            const fileName = document.querySelector('#file-js-example3 .file-name');
+                            fileName.textContent = fileInput3.files[0].name;
+                        }
+                    }
                 </script>
             </div>
         </div>
