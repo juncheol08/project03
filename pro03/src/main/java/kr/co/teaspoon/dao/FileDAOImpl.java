@@ -29,18 +29,6 @@ public class FileDAOImpl implements FileDAO {
             sqlSession.insert("fileboard.fileInsert", file);
         }
     }
-    @Transactional
-    @Override
-    public void updateFileboard(FileVO fileboard) throws Exception {
-        FileBoard board = fileboard.getFileBoard();
-        List<FileDTO> fileList = fileboard.getFileList();
-        sqlSession.update("fileboard.fileboardUpdate", board);
-//        FileBoard latestBoard = sqlSession.selectOne("fileboard.latestFileboard");
-        for(FileDTO file:fileList) {
-//            file.setPostNo(latestBoard.getPostNo());
-            sqlSession.update("fileboard.fileUpdate", file);
-        }
-    }
 
     //파일 자료 목록 불러오기
     @Override
@@ -105,5 +93,17 @@ public class FileDAOImpl implements FileDAO {
     @Override
     public void removeFileAll(int postNo) throws Exception {
         sqlSession.delete("fileboard.fileDelete", postNo);
+    }
+    @Transactional
+    @Override
+    public void updateFileboard(FileVO fileboard) throws Exception {
+        FileBoard board = fileboard.getFileBoard();
+        List<FileDTO> fileList = fileboard.getFileList();
+        sqlSession.update("fileboard.fileboardUpdate", board);
+//        FileBoard latestBoard = sqlSession.selectOne("fileboard.latestFileboard");
+        for(FileDTO file:fileList) {
+//            file.setPostNo(latestBoard.getPostNo());
+            sqlSession.update("fileboard.fileUpdate", file);
+        }
     }
 }

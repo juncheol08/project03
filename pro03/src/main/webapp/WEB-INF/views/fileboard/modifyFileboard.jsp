@@ -150,10 +150,12 @@
                            sucess:function(){
                              console.log("파일 삭제 성공");
                              $("#filelink1").remove();
+                               $(".remove_btn1").remove()
                            },
                            error:function(){
                                console.log("파일 삭제 실패");
                                $("#filelink1").remove();
+                               $(".remove_btn1").remove()
                            }
                        });
                     });
@@ -170,10 +172,12 @@
                             sucess:function(){
                                 console.log("파일 삭제 성공");
                                 $("#filelink2").remove();
+                                $(".remove_btn2").remove()
                             },
                             error:function(){
                                 console.log("파일 삭제 실패");
                                 $("#filelink2").remove();
+                                $(".remove_btn2").remove()
                             }
                         });
                     });
@@ -190,10 +194,12 @@
                             sucess:function(){
                                 console.log("파일 삭제 성공");
                                 $("#filelink3").remove();
+                                $(".remove_btn3").remove()
                             },
                             error:function(){
                                 console.log("파일 삭제 실패");
                                 $("#filelink3").remove();
+                                $(".remove_btn3").remove()
                             }
                         });
                     });

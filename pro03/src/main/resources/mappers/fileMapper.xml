@@ -47,9 +47,7 @@
 			</otherwise>
 		</choose>
 	</insert>
-<!--	<update id="fileUpdate">-->
-<!--		update fileobj set saveFolder=#{saveFolder}, originFile=#{originFile}, saveFile=#{saveFile}, fileSize=#{fileSize}, uploadDate=#{uploadDate} where no=#{no}-->
-<!--	</update>-->
+
 
 
 
