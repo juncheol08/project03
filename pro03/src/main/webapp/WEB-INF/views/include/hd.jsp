@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="path1" value="${pageContext.request.contextPath }" />
 
-<header id="hd">
+<header id="hd" style="margin-bottom: 90px">
 <%--<header id="hd" class="container is-fullhd">--%>
 
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="height: 90px; background-color: #D9E7E6">
@@ -25,9 +25,9 @@
             <a href="${path1}/notice/list.do" class="navbar-item">
                 공지사항
             </a>
-            <a href="${path1}/free/list.do" class="navbar-item">
-                게시판old
-            </a>
+<%--            <a href="${path1}/free/list.do" class="navbar-item">--%>
+<%--                게시판old--%>
+<%--            </a>--%>
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
                     게시판

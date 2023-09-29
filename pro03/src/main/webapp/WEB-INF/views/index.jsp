@@ -17,7 +17,7 @@
 <body>
 <jsp:include page="./include/hd.jsp"></jsp:include>
 <section class="hero is-large is-info">
-    <div class="hero-body" style="background-image:url('${path1}/resources/img/studentBg.jpg'); background-position: center 80px; background-size: cover;"  >
+    <div class="hero-body" style="background-image:url('${path1}/resources/img/studentBg.jpg'); background-position: center 80px; background-size: cover; background-repeat: no-repeat; background-color: #D9E7E6"  >
         <p class="title">
             Teaspoon
 <%--            Large hero--%>
